@@ -1,0 +1,5 @@
+{
+  "name": "react-weather-app",
+  "description": "A React application which reports weather forecasts using the OpenWeatherMap API found at http://openweathermap.org/api.",
+  "repository": "https://github.com/dxing91/react-weather-app.git"
+}
