@@ -20,12 +20,11 @@ function styles(props) {
 }
 
 function Search(props) {
-  console.log(styles(props));
   return (
-    <div className="form-group" style={styles(props).form}>
+    <form className="form-group" style={styles(props).form} onSubmit={props.onSubmitLocation}>
       <input className="form-control" type="text" placeholder="Enter Location (e.g. Sydney, Australia)" onChange={props.onUpdateLocation} value={props.location} />
-      <button className="btn btn-success" type="submit" onClick={props.onSubmitLocation} style={styles(props).button}>GO</button>
-    </div>
+      <button className="btn btn-success" type="submit" style={styles(props).button}>GO</button>
+    </form>
   );
 }
 

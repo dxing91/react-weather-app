@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
-import Search from './Search';
+import SearchContainer from '../containers/SearchContainer';
 
 const styles = {
   header: {
@@ -20,44 +20,13 @@ const styles = {
   }
 }
 
-export default class Header extends Component {
-  constructor() {
-    super();
-    this.state = {
-      location: ''
-    }
-  }
-
-  handleUpdateLocation(event) {
-    this.setState({
-      location: event.target.value
-    });
-  }
-
-  handleSubmitLocation(event) {
-    event.preventDefault();
-    const location = this.state.location;
-    this.setState({
-      location: ''
-    });
-    this.context.router.push(`/forecast/${location}`);
-  }
-
-  render() {
+function Header() {
     return(
       <div style={styles.header}>
         <Link to="/" style={styles.link}><h1 style={styles.h1}>Fo' Drizzle.</h1></Link>
-        <Search onUpdateLocation={(event) => this.handleUpdateLocation(event)}
-                onSubmitLocation={(event) => this.handleSubmitLocation(event)}
-                direction="row" />
+        <SearchContainer direction="row" />
       </div>
     );
-  }
-
 }
-
-Header.contextTypes = {
-  router: PropTypes.object.isRequired
-};
 
 export default Header;

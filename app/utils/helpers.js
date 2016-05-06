@@ -23,6 +23,10 @@ const monthMap = {
   '11': 'Dev'
 };
 
+function toTitleCase(str) {
+  return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+}
+
 function processDate(date = '') {
   const dateInMilliseconds = new Date(date * 1000);
   const day = dayMap[dateInMilliseconds.getDay()];
@@ -36,10 +40,9 @@ function processCurrentWeather(results) {
   const date = processDate();
   return {
     date,
-    description: current.weather[0].description,
+    description: toTitleCase(current.weather[0].description),
     icon: current.weather[0].icon,
-    minTemp: `${current.main.temp_min}°C`,
-    maxTemp: `${current.main.temp_max}°C`,
+    temp: `${current.main.temp_min}°C`,
     humidity: current.main.humidity
   }
 }
@@ -52,7 +55,7 @@ function processForecastWeather(results) {
     date =  processDate(forecast.list[i].dt);
     forecastWeather.push({
       date,
-      description: forecast.list[i].weather[0].description,
+      description: toTitleCase(forecast.list[i].weather[0].description),
       icon: forecast.list[i].weather[0].icon,
       minTemp: `${forecast.list[i].temp.min}°C`,
       maxTemp: `${forecast.list[i].temp.max}°C`,
@@ -62,4 +65,4 @@ function processForecastWeather(results) {
   return forecastWeather;
 }
 
-export { processCurrentWeather, processForecastWeather };
+export { toTitleCase, processCurrentWeather, processForecastWeather };
