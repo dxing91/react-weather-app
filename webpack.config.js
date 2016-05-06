@@ -1,9 +1,10 @@
 var HtmlWebpackPlugin = require('html-webpack-plugin');
-var HtmlWebpackPluginConfg = new HtmlWebpackPlugin({
+var HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
   template: __dirname + '/app/index.html',
   filename: 'index.html',
   inject: 'body'
 });
+var webpack = require("webpack");
 
 module.exports = {
   entry: [
@@ -18,5 +19,5 @@ module.exports = {
       {test: /\.js$/, exclude: /node_modules/, loader: "babel-loader"}
     ]
   },
-  plugins: [HtmlWebpackPluginConfg]
+  plugins: [HtmlWebpackPluginConfig, new webpack.DefinePlugin({"process.env": {NODE_ENV: '"production"'}})]
 }
