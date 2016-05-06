@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 
 const styles = {
@@ -31,15 +31,13 @@ const styles = {
 }
 
 function Details(props) {
-  console.log(props);
-  const icon = `/app/images/${props.icon}.svg`;
   if (props.minTemp && props.maxTemp) {
     return (
       <div style={styles.container}>
         <h1 style={styles.h1}>{props.location}</h1>
         <div>
           {props.date ? <h2 style={styles.h2}>{props.date}</h2> : ''}
-          <img src={icon} style={styles.image} />
+          <img src={props.icon} style={styles.image} />
           <p>Description: {props.description}</p>
           <p>Temperature: {props.minTemp} - {props.maxTemp}</p>
           <p>Humidity: {props.humidity}</p>
@@ -53,7 +51,7 @@ function Details(props) {
         <h1 style={styles.h1}>{props.location}</h1>
         <div>
           {props.date ? <h2 style={styles.h2}>{props.date}</h2> : ''}
-          <img src={icon} style={styles.image} />
+          <img src={props.icon} style={styles.image} />
           <p>Description: {props.description}</p>
           <p>Temperature: {props.temp}</p>
           <p>Humidity: {props.humidity}</p>
@@ -61,6 +59,16 @@ function Details(props) {
       </div>
     );
   }
+}
+
+Details.PropTypes = {
+  icon: PropTypes.string.isRequired,
+  location: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  minTemp: PropTypes.string.isRequired,
+  maxTemp: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired,
+  humidity: PropTypes.number.isRequired
 }
 
 export default Details;

@@ -41,7 +41,7 @@ function processCurrentWeather(results) {
   return {
     date,
     description: toTitleCase(current.weather[0].description),
-    icon: current.weather[0].icon,
+    icon: `/app/images/${current.weather[0].icon}.svg`,
     temp: `${current.main.temp_min}°C`,
     humidity: current.main.humidity
   }
@@ -56,7 +56,7 @@ function processForecastWeather(results) {
     forecastWeather.push({
       date,
       description: toTitleCase(forecast.list[i].weather[0].description),
-      icon: forecast.list[i].weather[0].icon,
+      icon: `/app/images/${forecast.list[i].weather[0].icon}.svg`,
       minTemp: `${forecast.list[i].temp.min}°C`,
       maxTemp: `${forecast.list[i].temp.max}°C`,
       humidity: forecast.list[i].humidity

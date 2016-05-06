@@ -14,10 +14,9 @@ const styles = {
 }
 
 function ForecastItem(props) {
-  const icon = `/app/images/${props.icon}.svg`;
   return (
     <div style={styles.container}>
-      <img src={icon} onClick={props.onMoreDetails} style={styles.image}/>
+      <img src={props.icon} onClick={props.onMoreDetails} style={styles.image}/>
       <h3>{props.date}</h3>
     </div>
   );

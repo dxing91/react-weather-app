@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react';
-import { Link } from 'react-router';
 import LoadingContainer from '../containers/LoadingContainer'
 import Details from '../components/Details';
 import Forecast from '../components/Forecast';
