@@ -4,8 +4,6 @@ var app = express();
 app.use(express.static('dist'));
 app.use('/app', express.static('app'));
 
-app.use((req, res) => {console.log(req.url); res.send()});
-
 app.get('/', function(request, response) {
   response.sendFile(__dirname + '/index.html');
 })
